@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M2KS3TD');</script>
+<!-- End Google Tag Manager -->
+
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RediRedi - La plataforma para el comercio que piensa en grande</title>
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,200..700,0..1,-50..200" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#b539e6',
+              secondary: '#6200ee',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      .gradient-text {
+        background: linear-gradient(90deg, #b539e6 0%, #6200ee 100%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      }
+      .material-symbols-rounded {
+        font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 28;
+      }
+      
+      /* Smooth Scroll Effects */
+      .scroll-section {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      
+      .scroll-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      
+      .scroll-section.stagger-1 { transition-delay: 0.1s; }
+      .scroll-section.stagger-2 { transition-delay: 0.2s; }
+      .scroll-section.stagger-3 { transition-delay: 0.3s; }
+      .scroll-section.stagger-4 { transition-delay: 0.4s; }
+      
+      /* Infinite Carousel Animation - Marquee Style */
+      .carousel-track {
+        display: flex;
+        width: fit-content;
+      }
+      
+      .carousel-group {
+        display: flex;
+        gap: 0.75rem;
+        padding-right: 0.75rem;
+        flex-shrink: 0;
+      }
+      
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      
+      .animate-scroll {
+        animation: marquee 15s linear infinite;
+      }
+      
+      /* Hide scrollbar styles */
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+      
+          </style>
+  </head>
+  <body class="bg-[#F9FAFB] text-slate-900 overflow-x-hidden">
+
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M2KS3TD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
