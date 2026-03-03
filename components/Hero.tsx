@@ -1,6 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ScrollSection } from './ScrollSection';
+import { handleSignupClick } from '../utils/url';
 
 const Hero: React.FC = () => {
   const baseUrl = '/plataforma-de-vendas-comercio/';
@@ -125,7 +126,7 @@ const Hero: React.FC = () => {
         {/* CTA Button */}
         <ScrollSection stagger={1.5} className="flex justify-center mb-8 md:mb-10">
           <button
-            onClick={() => window.open('https://app.rediredi.com/pt-BR/signup?' + window.location.search, '_blank')}
+            onClick={handleSignupClick}
             className="bg-[#b539e6] hover:bg-[#b539e6]/90 text-white px-8 py-3 rounded-full font-semibold text-sm md:text-base transition-all shadow-lg shadow-[#b539e6]/20 hover:scale-105"
           >
             Comece grátis

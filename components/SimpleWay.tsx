@@ -1,6 +1,7 @@
 
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { ScrollSection } from './ScrollSection';
+import { handleSignupClick } from '../utils/url';
 
 const SimpleWay: React.FC = () => {
   const baseUrl = '/plataforma-de-vendas-comercio/';
@@ -183,7 +184,7 @@ const SimpleWay: React.FC = () => {
 
         <ScrollSection stagger={3} className="mt-6 flex justify-center">
           <button
-            onClick={() => window.open('https://app.rediredi.com/pt-BR/signup?' + window.location.search, '_blank')}
+            onClick={handleSignupClick}
             className="bg-[#b539e6] hover:bg-[#b539e6]/90 text-white px-6 py-2.5 rounded-full font-semibold text-sm md:text-base transition-all shadow-lg shadow-[#b539e6]/20 hover:scale-105"
           >
             Comece grátis

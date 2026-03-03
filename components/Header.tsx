@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { handleSignupClick } from '../utils/url';
 
 const Header: React.FC = () => {
   const baseUrl = '/plataforma-de-vendas-comercio/';
@@ -16,7 +17,7 @@ const Header: React.FC = () => {
         </div>
 
         <button
-          onClick={() => window.open('https://app.rediredi.com/pt-BR/signup?' + window.location.search, '_blank')}
+          onClick={handleSignupClick}
           className="bg-[#b539e6] hover:bg-[#b539e6]/90 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-[#b539e6]/20 text-sm md:text-base"
         >
           Comece grátis
