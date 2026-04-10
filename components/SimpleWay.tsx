@@ -1,26 +1,26 @@
 
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { ScrollSection } from './ScrollSection';
+import { BASE_PATH } from '../utils/constants';
 import { handleSignupClick } from '../utils/url';
 
 const SimpleWay: React.FC = () => {
-  const baseUrl = '/plataforma-de-vendas-comercio/';
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   const features = useMemo(
     () => [
-      { label: 'Dashboard', icon: 'space_dashboard', image: `${baseUrl}Dash.jpg` },
-      { label: 'Pedidos', icon: 'shopping_bag', image: `${baseUrl}Pedidos.jpg` },
-      { label: 'Produtos', icon: 'inventory_2', image: `${baseUrl}Produtos.jpg` },
-      { label: 'Clientes', icon: 'group', image: `${baseUrl}Clientes.jpg` },
-      { label: 'Vendedores', icon: 'support_agent', image: `${baseUrl}Vendedores.jpg` },
-      { label: 'Impulsionar', icon: 'rocket_launch', image: `${baseUrl}Impulsionar.jpg` },
-      { label: 'Catálogo', icon: 'view_module', image: `${baseUrl}Catalogo.jpg` },
-      { label: 'Redi IA', icon: 'auto_awesome', image: `${baseUrl}Redi.jpg` }
+      { label: 'Dashboard', icon: 'space_dashboard', image: `${BASE_PATH}Dash.jpg` },
+      { label: 'Pedidos', icon: 'shopping_bag', image: `${BASE_PATH}Pedidos.jpg` },
+      { label: 'Produtos', icon: 'inventory_2', image: `${BASE_PATH}Produtos.jpg` },
+      { label: 'Clientes', icon: 'group', image: `${BASE_PATH}Clientes.jpg` },
+      { label: 'Vendedores', icon: 'support_agent', image: `${BASE_PATH}Vendedores.jpg` },
+      { label: 'Impulsionar', icon: 'rocket_launch', image: `${BASE_PATH}Impulsionar.jpg` },
+      { label: 'Catálogo', icon: 'view_module', image: `${BASE_PATH}Catalogo.jpg` },
+      { label: 'Redi IA', icon: 'auto_awesome', image: `${BASE_PATH}Redi.jpg` }
     ],
-    [baseUrl]
+    []
   );
 
   const [selectedIndex, setSelectedIndex] = useState(0);

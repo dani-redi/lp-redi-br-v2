@@ -1,16 +1,15 @@
 
 import React from 'react';
 import { handleSignupClick } from '../utils/url';
+import { BASE_PATH } from '../utils/constants';
 
 const Header: React.FC = () => {
-  const baseUrl = '/plataforma-de-vendas-comercio/';
-
   return (
     <header className="bg-white/80 backdrop-blur-md border-b border-slate-100 py-3 md:py-4 px-4 md:px-6 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <img
-            src={`${baseUrl}redi-redi.svg`}
+            src={`${BASE_PATH}redi-redi.svg`}
             alt="RediRedi"
             className="h-8 w-auto"
           />

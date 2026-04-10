@@ -1,11 +1,10 @@
 
 import React from 'react';
 import { ScrollSection } from './ScrollSection';
+import { BASE_PATH } from '../utils/constants';
 import { handleSignupClick } from '../utils/url';
 
 const PainPoints: React.FC = () => {
-  const baseUrl = '/plataforma-de-vendas-comercio/';
-
   const points = [
     {
       title: "Sem visibilidade nas vendas?",
@@ -37,7 +36,7 @@ const PainPoints: React.FC = () => {
           </div>
           <div className="relative min-h-[300px]">
             <img
-              src={`${baseUrl}lp-woman.png`}
+              src={`${BASE_PATH}lp-woman.png`}
               alt="Mujer usando celular"
               className="absolute inset-0 w-full h-full object-cover"
             />

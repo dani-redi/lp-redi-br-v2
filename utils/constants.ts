@@ -1,0 +1,1 @@
+export const BASE_PATH = '/plataforma-de-vendas-comercio/';

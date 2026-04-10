@@ -1,14 +1,13 @@
 
 import React from 'react';
+import { BASE_PATH } from '../utils/constants';
 
 const Footer: React.FC = () => {
-  const baseUrl = '/plataforma-de-vendas-comercio/';
-
   return (
     <footer className="bg-[#b539e6] text-white py-5 md:py-6 px-4 md:px-6">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center">
-          <img src={`${baseUrl}redi-redi.svg`} alt="RediRedi" className="h-7 w-auto brightness-0 invert" />
+          <img src={`${BASE_PATH}redi-redi.svg`} alt="RediRedi" className="h-7 w-auto brightness-0 invert" />
         </div>
         <p className="text-sm md:text-base font-medium text-white/90 text-center">
           © 2026 RediRedi. Todos os direitos reservados.

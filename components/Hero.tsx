@@ -1,13 +1,11 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { ScrollSection } from './ScrollSection';
+import { BASE_PATH } from '../utils/constants';
 import { handleSignupClick } from '../utils/url';
 
 const Hero: React.FC = () => {
-  const baseUrl = '/plataforma-de-vendas-comercio/';
   const carouselRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const pauseCarousel = () => {
@@ -41,7 +39,7 @@ const Hero: React.FC = () => {
     }
   }, [hoveredItem]);
 
-  const features = ['Catálogo', 'CRM', 'Pedidos', 'Central del Vendedor', 'Función compartir', 'Copiloto de IA'];
+  const features = ['Catálogo', 'CRM', 'Pedidos', 'Central do Vendedor', 'Compartilhamento', 'Copiloto de IA'];
 
   const tooltips: { [key: string]: string } = {
     'Catálogo': 'Organize seus produtos com fotos, preços e descrições profissionais',
@@ -132,7 +130,6 @@ const Hero: React.FC = () => {
             Comece grátis
           </button>
         </ScrollSection>
-
       </div>
     </section>
   );

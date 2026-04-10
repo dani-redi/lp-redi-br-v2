@@ -1,16 +1,15 @@
 
 import React, { useState } from 'react';
 import { ScrollSection } from './ScrollSection';
+import { BASE_PATH } from '../utils/constants';
 
 const Stats: React.FC = () => {
-  const baseUrl = '/plataforma-de-vendas-comercio/';
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const stats = [
     {
       label: 'Leads Gerados por Mês',
       value: '+50 Mil',
-      description: '',
       icon: 'shopping_cart',
       color: 'from-[#b539e6] to-[#6200ee]',
       tooltip: 'Total de pedidos pelos botões "comprar" e "pedir pelo whatsapp" gerados pelo catálogo'
@@ -18,7 +17,6 @@ const Stats: React.FC = () => {
     {
       label: 'ROI Médio Mensal',
       value: '30x',
-      description: '(Sobre mensalidade)',
       icon: 'savings',
       color: 'from-[#b539e6] to-[#6200ee]',
       tooltip: 'GMV médio mensal / mensalidade do plano Essential'
@@ -26,7 +24,6 @@ const Stats: React.FC = () => {
     {
       label: 'Novas Oportunidades Diárias',
       value: '5 a 10',
-      description: '(Geradas pela Redi IA)',
       icon: 'ads_click',
       color: 'from-[#b539e6] to-[#6200ee]',
       tooltip: 'Novas oportunidades de vendas de produtos geradas por Redi IA'
@@ -34,7 +31,6 @@ const Stats: React.FC = () => {
     {
       label: 'Aumento nas Vendas',
       value: 'até 30%',
-      description: '(Canais da Redi)',
       icon: 'trending_up',
       color: 'from-[#b539e6] to-[#6200ee]',
       tooltip: 'Aumento nas vendas nos canais gerenciados pela RediRedi - WhatsApp, Catálogo e Redes Sociais'
@@ -46,15 +42,15 @@ const Stats: React.FC = () => {
       <div className="max-w-7xl mx-auto relative">
         <ScrollSection className="text-center mb-6 md:mb-8">
 
-          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto text-semibold">
-            Resultados reales para quienes usan Redi en su día a día
+          <p className="text-lg md:text-xl text-slate-600 max-w-3xl mx-auto font-semibold">
+            Resultados reais para quem usa a Redi no dia a dia
           </p>
         </ScrollSection>
 
         <ScrollSection stagger={1} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 overflow-visible">
           {stats.map((stat, idx) => (
             <div
-              key={idx}
+              key={stat.label}
               className="group relative bg-white/80 backdrop-blur-sm rounded-2xl p-4 md:p-6 border border-[#b539e6]/20 hover:border-[#b539e6]/40 transition-all duration-300 hover:shadow-xl hover:shadow-[#b539e6]/10 hover:-translate-y-1 flex flex-col items-center text-center overflow-visible"
             >
               {/* Ícone de ajuda / Tooltip */}
@@ -101,7 +97,7 @@ const Stats: React.FC = () => {
         <ScrollSection stagger={2} className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-1 md:gap-2 mb-8 md:mb-6 bg-white p-6 sm:p-4 md:p-2 rounded-xl md:rounded-2xl border border-[#b539e6]/20 hover:border-[#b539e6]/40 transition-all duration-300 hover:shadow-xl hover:shadow-[#b539e6]/10 hover:-translate-y-1">
           <div className="w-full md:w-72 md:text-left text-center md:pl-8 md:py-4">
             <img
-              src={`${baseUrl}redi-ia.gif`}
+              src={`${BASE_PATH}redi-ia.gif`}
               alt="Redi IA em ação"
               className="rounded-xl md:rounded-2xl w-1/3 md:w-2/3 object-cover mx-auto md:mx-0"
             />
@@ -119,12 +115,11 @@ const Stats: React.FC = () => {
         {/* Meta Business Partners Badge */}
         <ScrollSection stagger={3} className="flex justify-center">
           <img
-            src={`${baseUrl}meta-partner.svg`}
+            src={`${BASE_PATH}meta-partner.svg`}
             alt="RediRedi - Meta Business Partners"
             className="h-12 md:h-12 w-auto"
           />
         </ScrollSection>
-
       </div>
     </section>
   );

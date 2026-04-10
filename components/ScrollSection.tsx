@@ -37,12 +37,11 @@ export const ScrollSection: React.FC<ScrollSectionProps> = ({
     return () => observer.disconnect();
   }, []);
 
-  const staggerClass = stagger > 0 ? `stagger-${stagger}` : '';
-  
   return (
     <div 
       ref={ref}
-      className={`scroll-section ${staggerClass} ${isVisible ? 'visible' : ''} ${className}`}
+      className={`scroll-section ${isVisible ? 'visible' : ''} ${className}`}
+      style={stagger > 0 ? { transitionDelay: `${stagger * 100}ms` } : undefined}
     >
       {children}
     </div>
