@@ -2,7 +2,7 @@
 import React from 'react';
 import { ScrollSection } from './ScrollSection';
 import { BASE_PATH } from '../utils/constants';
-import { handleSignupClick } from '../utils/url';
+import SignupLink from './SignupLink';
 
 const PainPoints: React.FC = () => {
   const points = [
@@ -62,12 +62,11 @@ const PainPoints: React.FC = () => {
         </ScrollSection>
 
         <ScrollSection stagger={2} className="flex justify-center">
-          <button
-            onClick={handleSignupClick}
+          <SignupLink
             className="bg-[#b539e6] hover:bg-[#b539e6]/90 text-white px-6 py-2.5 rounded-full font-semibold text-sm md:text-base transition-all shadow-lg shadow-[#b539e6]/20 hover:scale-105"
           >
             Comece grátis
-          </button>
+          </SignupLink>
         </ScrollSection>
       </div>
     </section>

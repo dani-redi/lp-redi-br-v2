@@ -17,20 +17,31 @@ window.open('https://app.rediredi.com/pt-BR/signup?' + window.location.search, '
 
 ## 2. A Solução Implementada
 
-Para resolver esses pontos, criamos e arquitetamos uma função utilitária global e testável chamada `handleSignupClick`. Essa função interage nativamente com as bibliotecas nativas web API `URL` e `URLSearchParams`, avaliando a URL atual de maneira robusta. 
+Para resolver esses pontos, centralizamos a montagem da URL de signup em uma utilidade global. Essa lógica interage nativamente com as web APIs `URL` e `URLSearchParams`, avaliando a URL atual de maneira robusta.
 
-**O que essa função faz na prática?**
+**O que essa lógica faz na prática?**
 1. Checa a URL do navegador.
 2. Procura ativamente por chaves (keys) iniciados com a tag `utm_` (ex: `utm_source`, `utm_campaign`, `utm_medium`, etc).
 3. Caso **NÃO POSSUA NENHUM** parâmetro referente a tracking UTM, a função injeta explicitamente o comportamento padrão: `utm_source=organic_lp`.
 4. Caso já exista alguma campanha UTM rodando, a aplicação irá preservar os valores e enviá-los ao App.
 
+## 2.1. Observação importante para GTM
+
+Se o seu trigger no Google Tag Manager depende da variável `Click URL`, o CTA precisa ser um link real com `href` apontando para `signup`.
+
+Motivo:
+
+- um `<button>` com `window.open(...)` abre a página de destino, mas não popula `Click URL` como um clique de link tradicional
+- nesse cenário, o GA4 pode estar corretamente configurado e, ainda assim, a trigger do GTM não disparar porque a condição `Click URL contains signup` nunca é satisfeita
+
+Por isso, o padrão recomendado nesta landing passou a ser `a[href]`, e não `button` com navegação via JavaScript, para os CTAs de signup.
+
 O processamento lógico mora de forma contida na raiz do sistema:
 **Arquivo utilitário: `utils/url.ts`**
 ```typescript
-export const handleSignupClick = () => {
+export const getSignupUrl = (search = window.location.search) => {
   const url = new URL('https://app.rediredi.com/pt-BR/signup');
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(search);
   
   let hasUtm = false;
   params.forEach((_, key) => {
@@ -44,7 +55,7 @@ export const handleSignupClick = () => {
   }
 
   url.search = params.toString();
-  window.open(url.toString(), '_blank');
+  return url.toString();
 };
 ```
 
@@ -54,16 +65,16 @@ export const handleSignupClick = () => {
 
 Se você, desenvolvedor, possuir a missão de criar uma NOVA seção ou página contendo um CTA (Call to Action) para o "Sign Up" (Cadastro), basta acoplar a função citada, sem a necessidade de reescrever lógica pura de URLs.
 
-### Passo 1: Importe a função analítica `handleSignupClick`
+### Passo 1: Importe a função utilitária `getSignupUrl`
 No topo do seu arquivo do componente (ex: `NovoComponente.tsx`):
 
 ```tsx
-import { handleSignupClick } from '../utils/url';
+import { getSignupUrl } from '../utils/url';
 ```
 *(Nota: Certifique-se apenas se o caminho das pastas (ex: `../` ou `../../`) está correto).*
 
-### Passo 2: Acople-o no evento de Interação do Componente HTML
-No elemento de ação como seu `<button>` contendo a funcionalidade de "Comece grátis", apenas vincule à sua prop `onClick`.
+### Passo 2: Use um link real no CTA
+No elemento de ação, prefira um `<a>` com `href`, para que o GTM consiga ler `Click URL` normalmente.
 
 **Em vez de utilizar isso (Padrão Antigo):**
 ```tsx
@@ -76,10 +87,10 @@ No elemento de ação como seu `<button>` contendo a funcionalidade de "Comece g
 
 **Faça isso (Padrão Novo e Recomendado):**
 ```tsx
-<button onClick={handleSignupClick}>
+<a href={getSignupUrl()} target="_blank" rel="noopener noreferrer">
   Comece grátis
-</button>
+</a>
 ```
 
 ### O que acontece no final?
-Todos os botões que acionarem com clique a função `handleSignupClick` irão herdar as boas práticas de atribuição orgânica "organic_lp", preservando a saúde analítica das suas plataformas do Google Analytics/Plataforma Ads.
+Todos os CTAs que apontarem para `getSignupUrl()` irão herdar as boas práticas de atribuição orgânica `organic_lp`, preservando a saúde analítica das suas plataformas do Google Analytics/Plataforma Ads e mantendo compatibilidade com triggers do GTM baseadas em `Click URL`.

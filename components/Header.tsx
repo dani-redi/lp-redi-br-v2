@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { handleSignupClick } from '../utils/url';
 import { BASE_PATH } from '../utils/constants';
+import SignupLink from './SignupLink';
 
 const Header: React.FC = () => {
   return (
@@ -15,12 +15,11 @@ const Header: React.FC = () => {
           />
         </div>
 
-        <button
-          onClick={handleSignupClick}
+        <SignupLink
           className="bg-[#b539e6] hover:bg-[#b539e6]/90 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-lg shadow-[#b539e6]/20 text-sm md:text-base"
         >
           Comece grátis
-        </button>
+        </SignupLink>
       </div>
     </header>
   );
